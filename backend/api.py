@@ -1,3 +1,4 @@
+import logging
 from flask import Flask
 from flask_restful import Api
 from flask_sqlalchemy import SQLAlchemy
@@ -16,6 +17,13 @@ def create_app(db_location):
     :param db_location: Connection string to the database
     :return: Initialized Flask app
     """
+
+    logging.basicConfig(
+        level=logging.DEBUG,
+        format="%(asctime)s %(name)-12s %(levelname)-8s %(message)s",
+        datefmt="%m-%d %H:%M",
+        handlers=[logging.FileHandler("visits_api.log"), logging.StreamHandler()],
+    )
 
     app = Flask(__name__)
     app.config["SQLALCHEMY_DATABASE_URI"] = db_location
