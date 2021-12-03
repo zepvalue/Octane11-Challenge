@@ -1,0 +1,29 @@
+Requirements 
+Create an API with two endpoints: 
+  1. visit/ - POST - The endpoint must store a new visit in the system. 
+
+  2. visits/show/ - GET - The endpoint returns the list of visits stored.
+    It could also receive query string parameters for filtering the results.
+    You should build out functionality for any filter you consider relevant 
+    and would need for the frontend. For example, filtering by date (ex: ?date=2021-10-01). 
+
+
+Create a React.js application with two pages: 
+  1. / (root) - When visited it should register the visit. It should collect the time and the IP of the user, as well as any other information that would be relevant for future analysis. For example, user-agent, device, url, etc. 
+  2. /visits - Show a reporting tool for analyzing the visits received by the application. 
+
+
+  We expect you to be creative with the reporting tool page. Some ideas are: 
+● Interactive data tables with visit data 
+● Charts to show trends 
+● Export tool for serializing/downloading the data 
+● Filters
+
+
+- create environment variables 
+- test code 
+- filters in reactive ? 
+- easy to deploy
+- documentation (api docs)
+- mocking data with faker ?
+- pipeline or docker ?
