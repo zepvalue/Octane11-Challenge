@@ -16,8 +16,12 @@
   },
   "dependencies": {
     "axios": "^0.24.0",
+    "date-fns": "^2.27.0",
     "gatsby": "^4.2.0",
+    "gatsby-plugin-remove-serviceworker": "^1.0.0",
     "react": "^17.0.1",
+    "react-data-table-component": "^7.4.5",
+    "react-datepicker": "^4.5.0",
     "react-dom": "^17.0.1"
   }
 }

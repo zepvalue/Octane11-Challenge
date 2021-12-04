@@ -7,6 +7,7 @@ from database import db
 from resources.visitCollection_resource import VisitCollectionResource, VISIT_COLLECTION_ENDPOINT
 from resources.visitItem_resource import VisitItemResource, VISIT_ITEM_ENDPOINT
 from flask_sqlalchemy import SQLAlchemy
+from flask_cors import CORS
 
 
 def create_app(db_location):
@@ -22,16 +23,20 @@ def create_app(db_location):
         level=logging.DEBUG,
         format="%(asctime)s %(name)-12s %(levelname)-8s %(message)s",
         datefmt="%m-%d %H:%M",
-        handlers=[logging.FileHandler("visits_api.log"), logging.StreamHandler()],
+        handlers=[logging.FileHandler(
+            "visits_api.log"), logging.StreamHandler()],
     )
 
     app = Flask(__name__)
+    CORS(app)
     app.config["SQLALCHEMY_DATABASE_URI"] = db_location
 
     db.init_app(app)
-    api=Api(app)
-    api.add_resource(VisitCollectionResource, VISIT_COLLECTION_ENDPOINT, f"{VISIT_COLLECTION_ENDPOINT}/<date>")
-    api.add_resource(VisitItemResource, VISIT_ITEM_ENDPOINT, f"{VISIT_ITEM_ENDPOINT}/")
+    api = Api(app)
+    api.add_resource(VisitCollectionResource, VISIT_COLLECTION_ENDPOINT,
+                     f"{VISIT_COLLECTION_ENDPOINT}/<date>")
+    api.add_resource(VisitItemResource, VISIT_ITEM_ENDPOINT,
+                     f"{VISIT_ITEM_ENDPOINT}/")
     return app
 
 

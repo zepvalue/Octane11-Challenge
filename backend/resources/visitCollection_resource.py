@@ -4,6 +4,8 @@ from models.visit import Visit
 from flask_restful import Resource, abort
 from sqlalchemy.orm.exc import NoResultFound
 from schemas.visit_schema import VisitSchema
+from flask_cors import cross_origin
+
 
 VISIT_COLLECTION_ENDPOINT = "/api/visits/show"
 logger = logging.getLogger(__name__)
@@ -18,31 +20,30 @@ class VisitCollectionResource(Resource):
         :param date: Visit DATE to retrieve, this query parameter is optional
         :return: Visit, 200 HTTP status code
         """
+        date = request.args.get('date')
         if not date:
-            date = request.args.get('date')
             logger.info(f"Retrieving all visits")
-        
+
             return self._get_all_visits(), 200
 
-        logger.info(f"Retrieving visit by date {date}")
+        logger.info(f"Retrieving visits by date {date}")
 
-        try: 
-            return self._get_visit_by_date(date), 200
+        try:
+            return self._get_visits_by_date(date), 200
         except NoResultFound:
             abort(404, message="Visit not found")
 
-   
     def _get_all_visits(self):
         visits = Visit.query.all()
 
         visits_json = [VisitSchema().dump(visit) for visit in visits]
         return visits_json
 
-    def _get_visit_by_date(self, date):
-        visit = Visit.query.filter_by(last_access=date).first()
-        visit_json = VisitSchema().dump(visit)
+    def _get_visits_by_date(self, date):
+        visits = Visit.query.filter_by(last_access=date)
+        visits_json = [VisitSchema().dump(visit) for visit in visits]
 
-        if not visit:
+        if not visits:
             raise NoResultFound()
 
-        return visit_json
+        return visits_json
