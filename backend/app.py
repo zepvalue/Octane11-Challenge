@@ -1,4 +1,4 @@
-import logging
+
 from flask import Flask
 from flask_restful import Api
 from flask_sqlalchemy import SQLAlchemy
@@ -19,14 +19,6 @@ def create_app():
     :return: Initialized Flask app
     """
 
-    logging.basicConfig(
-        level=logging.DEBUG,
-        format="%(asctime)s %(name)-12s %(levelname)-8s %(message)s",
-        datefmt="%m-%d %H:%M",
-        handlers=[logging.FileHandler(
-            "visits_api.log"), logging.StreamHandler()],
-    )
-
     app = Flask(__name__)
     CORS(app)
 
@@ -42,4 +34,5 @@ def create_app():
 if __name__ == "__main__":
     app = create_app()
     app.config.from_object("config.DevelopmentConfig")
-    app.run(debug=True)
+    # FIXME The app.run should not berun in production
+    app.run(host="localhost", port=5000, debug=True)

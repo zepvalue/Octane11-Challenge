@@ -1,12 +1,11 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import DataTable from "react-data-table-component";
 import DatePicker from "react-datepicker";
 import { format } from "date-fns";
 import "react-datepicker/dist/react-datepicker.css";
 import "react-datepicker/dist/react-datepicker-cssmodules.min.css";
-import Chart from "../components/chart/index.js";
-import VisitsTable from "../components/VisitsTable/index.js";
+import MapChart from "../components/MapChart";
+import VisitsTable from "../components/VisitsTable";
 
 // styles
 const pageStyles = {
@@ -26,35 +25,12 @@ const IndexPage = () => {
   const [ip, setIp] = useState("");
   const [visits, setVisits] = useState([]);
   const today = new Date();
+
   const [startDate, setStartDate] = useState(today);
   const [loading, setLoading] = useState(false);
+  const [country, setCountry] = useState("");
 
   const deviceInfo = window.navigator.userAgent;
-
-  const columns = useMemo(() => [
-    {
-      id: 1,
-      name: "visit_id",
-      selector: (row) => row.visit_id,
-      sortable: true,
-      reorder: true,
-    },
-    {
-      id: 2,
-      name: "ip_address",
-      selector: (row) => row.ip_address,
-      sortable: true,
-      reorder: true,
-    },
-    {
-      id: 3,
-      name: "last_access",
-      selector: (row) => row.last_access,
-      sortable: true,
-      right: true,
-      reorder: true,
-    },
-  ]);
 
   const fetchFilteredRes = async (date) => {
     const formattedDate = format(date, "MM-dd-yyyy");
@@ -73,6 +49,7 @@ const IndexPage = () => {
 
     axios.get("https://api.db-ip.com/v2/free/self").then((response) => {
       setIp(response.data.ipAddress);
+      setCountry(response.data.countryName);
 
       axios.post("http://127.0.0.1:5000/api/visit", {
         ip_address: response.data.ipAddress,
@@ -85,13 +62,17 @@ const IndexPage = () => {
       setVisits(res.data);
       setLoading(false);
     });
-  }, []);
+  }, [startDate]);
 
   return (
     <main style={pageStyles}>
       <title>Visits Tracker</title>
       <div>
-        <h1 style={headingStyles}>{`Today is : ${format(
+        Connected from {country}
+        <MapChart />
+      </div>
+      <div>
+        <h1 style={headingStyles}>{`Today is ${format(
           startDate,
           "EEEE,MMMM do, yyyy hh:mm a"
         )}`}</h1>
@@ -126,8 +107,6 @@ const IndexPage = () => {
       <div>
         <VisitsTable visits={visits} loading={loading} />
       </div>
-
-      <Chart />
     </main>
   );
 };

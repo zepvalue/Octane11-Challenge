@@ -1755,3 +1755,79 @@
 12-06 17:37 werkzeug     WARNING   * Debugger is active!
 12-06 17:37 werkzeug     INFO      * Debugger PIN: 980-391-313
 12-06 17:37 werkzeug     INFO      * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+12-06 17:44 werkzeug     INFO      * Detected change in 'c:\\Users\\zepvalue\\dev\\Octane11\\backend\\config.py', reloading
+12-06 17:44 werkzeug     INFO      * Restarting with stat
+12-06 17:44 werkzeug     WARNING   * Debugger is active!
+12-06 17:44 werkzeug     INFO      * Debugger PIN: 980-391-313
+12-06 17:44 werkzeug     INFO      * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+12-06 17:44 werkzeug     INFO      * Detected change in 'c:\\Users\\zepvalue\\dev\\Octane11\\backend\\config.py', reloading
+12-06 17:44 werkzeug     INFO      * Restarting with stat
+12-06 17:44 werkzeug     WARNING   * Debugger is active!
+12-06 17:44 werkzeug     INFO      * Debugger PIN: 980-391-313
+12-06 17:44 werkzeug     INFO      * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+12-06 17:44 werkzeug     INFO      * Detected change in 'c:\\Users\\zepvalue\\dev\\Octane11\\backend\\config.py', reloading
+12-06 17:44 werkzeug     INFO      * Restarting with stat
+12-06 17:44 werkzeug     WARNING   * Debugger is active!
+12-06 17:44 werkzeug     INFO      * Debugger PIN: 980-391-313
+12-06 17:44 werkzeug     INFO      * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+12-06 17:44 werkzeug     INFO      * Detected change in 'c:\\Users\\zepvalue\\dev\\Octane11\\backend\\config.py', reloading
+12-06 17:44 werkzeug     INFO      * Restarting with stat
+12-06 17:44 werkzeug     WARNING   * Debugger is active!
+12-06 17:44 werkzeug     INFO      * Debugger PIN: 980-391-313
+12-06 17:44 werkzeug     INFO      * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+12-06 17:46 werkzeug     INFO      * Detected change in 'c:\\Users\\zepvalue\\dev\\Octane11\\backend\\app.py', reloading
+12-06 17:46 werkzeug     INFO      * Restarting with stat
+12-06 17:46 werkzeug     WARNING   * Debugger is active!
+12-06 17:46 werkzeug     INFO      * Debugger PIN: 980-391-313
+12-06 17:46 werkzeug     INFO      * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+12-06 17:47 werkzeug     INFO      * Detected change in 'c:\\Users\\zepvalue\\dev\\Octane11\\backend\\app.py', reloading
+12-06 17:47 werkzeug     INFO      * Restarting with stat
+12-06 17:47 werkzeug     WARNING   * Debugger is active!
+12-06 17:47 werkzeug     INFO      * Debugger PIN: 980-391-313
+12-06 17:47 werkzeug     INFO      * Running on http://localhost:5000/ (Press CTRL+C to quit)
+12-06 17:51 resources.visitCollection_resource INFO     Retrieving all visits
+12-06 17:51 werkzeug     INFO     127.0.0.1 - - [06/Dec/2021 17:51:59] "[37mGET /api/visits/show HTTP/1.1[0m" 200 -
+12-06 17:52 werkzeug     INFO      * Detected change in 'c:\\Users\\zepvalue\\dev\\Octane11\\backend\\config.py', reloading
+12-06 17:52 werkzeug     INFO      * Restarting with stat
+12-06 17:52 werkzeug     WARNING   * Debugger is active!
+12-06 17:52 werkzeug     INFO      * Debugger PIN: 980-391-313
+12-06 17:52 werkzeug     INFO      * Running on http://localhost:5000/ (Press CTRL+C to quit)
+12-06 17:53 werkzeug     INFO      * Detected change in 'c:\\Users\\zepvalue\\dev\\Octane11\\backend\\config.py', reloading
+12-06 17:53 werkzeug     INFO      * Restarting with stat
+12-06 17:53 werkzeug     WARNING   * Debugger is active!
+12-06 17:53 werkzeug     INFO      * Debugger PIN: 980-391-313
+12-06 17:53 werkzeug     INFO      * Running on http://localhost:5000/ (Press CTRL+C to quit)
+12-06 17:53 werkzeug     INFO      * Detected change in 'c:\\Users\\zepvalue\\dev\\Octane11\\backend\\config.py', reloading
+12-06 17:53 werkzeug     INFO      * Restarting with stat
+12-06 17:53 werkzeug     WARNING   * Debugger is active!
+12-06 17:53 werkzeug     INFO      * Debugger PIN: 980-391-313
+12-06 17:53 werkzeug     INFO      * Running on http://localhost:5000/ (Press CTRL+C to quit)
+12-06 17:53 resources.visitCollection_resource INFO     Retrieving all visits
+12-06 17:53 werkzeug     INFO     127.0.0.1 - - [06/Dec/2021 17:53:11] "[37mGET /api/visits/show HTTP/1.1[0m" 200 -
+12-06 17:57 werkzeug     INFO      * Detected change in 'c:\\Users\\zepvalue\\dev\\Octane11\\backend\\app.py', reloading
+12-06 17:57 werkzeug     INFO      * Restarting with stat
+12-06 17:57 werkzeug     WARNING   * Debugger is active!
+12-06 17:57 werkzeug     INFO      * Debugger PIN: 980-391-313
+12-06 17:57 werkzeug     INFO      * Running on http://localhost:5000/ (Press CTRL+C to quit)
+12-06 17:57 werkzeug     INFO      * Detected change in 'c:\\Users\\zepvalue\\dev\\Octane11\\backend\\app.py', reloading
+12-06 17:57 werkzeug     INFO      * Restarting with stat
+12-06 17:57 werkzeug     WARNING   * Debugger is active!
+12-06 17:57 werkzeug     INFO      * Debugger PIN: 980-391-313
+12-06 17:57 werkzeug     INFO      * Running on http://localhost:5000/ (Press CTRL+C to quit)
+12-06 17:58 werkzeug     INFO      * Detected change in 'c:\\Users\\zepvalue\\dev\\Octane11\\backend\\config.py', reloading
+12-06 17:58 werkzeug     INFO      * Restarting with stat
+12-06 17:58 werkzeug     WARNING   * Debugger is active!
+12-06 17:58 werkzeug     INFO      * Debugger PIN: 980-391-313
+12-06 17:58 werkzeug     INFO      * Running on http://localhost:5000/ (Press CTRL+C to quit)
+12-06 17:58 werkzeug     INFO      * Detected change in 'c:\\Users\\zepvalue\\dev\\Octane11\\backend\\config.py', reloading
+12-06 17:58 werkzeug     INFO      * Restarting with stat
+12-06 17:58 werkzeug     WARNING   * Debugger is active!
+12-06 17:58 werkzeug     INFO      * Debugger PIN: 980-391-313
+12-06 17:58 werkzeug     INFO      * Running on http://localhost:5000/ (Press CTRL+C to quit)
+12-06 17:58 werkzeug     INFO      * Detected change in 'c:\\Users\\zepvalue\\dev\\Octane11\\backend\\config.py', reloading
+12-06 17:58 werkzeug     INFO      * Restarting with stat
+12-06 17:58 werkzeug     WARNING   * Debugger is active!
+12-06 17:58 werkzeug     INFO      * Debugger PIN: 980-391-313
+12-06 17:58 werkzeug     INFO      * Running on http://localhost:5000/ (Press CTRL+C to quit)
+12-06 17:58 werkzeug     INFO      * Detected change in 'c:\\Users\\zepvalue\\dev\\Octane11\\backend\\config.py', reloading
+12-06 17:58 werkzeug     INFO      * Restarting with stat
