@@ -5,13 +5,14 @@ import DatePicker from "react-datepicker";
 import { format } from "date-fns";
 import "react-datepicker/dist/react-datepicker.css";
 import "react-datepicker/dist/react-datepicker-cssmodules.min.css";
+import Chart from "../components/chart/index.js";
+import VisitsTable from "../components/VisitsTable/index.js";
 
 // styles
 const pageStyles = {
   color: "#232129",
   display: "flex",
   flexDirection: "column",
-  border: "1px blue solid",
   padding: 96,
   fontFamily: "-apple-system, Roboto, sans-serif, serif",
 };
@@ -27,6 +28,8 @@ const IndexPage = () => {
   const today = new Date();
   const [startDate, setStartDate] = useState(today);
   const [loading, setLoading] = useState(false);
+
+  const deviceInfo = window.navigator.userAgent;
 
   const columns = useMemo(() => [
     {
@@ -96,7 +99,6 @@ const IndexPage = () => {
 
       <div
         style={{
-          border: "1px red dotted",
           display: "flex",
           alignItems: "center",
         }}
@@ -115,18 +117,17 @@ const IndexPage = () => {
         </div>
       </div>
 
-      <div> {`Your ip address: ${ip}`}</div>
       <div>
-        <DataTable
-          title="Visits"
-          columns={columns}
-          data={visits}
-          progressPending={loading}
-          pagination
-          paginationPerPage={5}
-          paginationRowsPerPageOptions={[5, 15, 25, 50]}
-        />
+        <p>
+          Your ip address: <b>{ip}</b>
+        </p>
       </div>
+      <div>You are using : {deviceInfo}</div>
+      <div>
+        <VisitsTable visits={visits} loading={loading} />
+      </div>
+
+      <Chart />
     </main>
   );
 };

@@ -10,7 +10,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 
 
-def create_app(db_location):
+def create_app():
     """
     Function that creates our Flask application.
     This function creates the Flask app, Flask-Restful API,
@@ -29,7 +29,6 @@ def create_app(db_location):
 
     app = Flask(__name__)
     CORS(app)
-    app.config["SQLALCHEMY_DATABASE_URI"] = db_location
 
     db.init_app(app)
     api = Api(app)
@@ -41,5 +40,6 @@ def create_app(db_location):
 
 
 if __name__ == "__main__":
-    app = create_app(OCTANE_11_DATABASE)
+    app = create_app()
+    app.config.from_object("config.DevelopmentConfig")
     app.run(debug=True)
