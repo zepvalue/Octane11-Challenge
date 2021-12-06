@@ -14,10 +14,10 @@ Create a React.js application with two pages:
 
 
   We expect you to be creative with the reporting tool page. Some ideas are: 
-● Interactive data tables with visit data 
+● Interactive data tables with visit data V
 ● Charts to show trends 
 ● Export tool for serializing/downloading the data 
-● Filters
+● Filters V
 
 
 - create environment variables 

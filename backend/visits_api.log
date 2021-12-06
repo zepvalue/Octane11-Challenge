@@ -1173,3 +1173,19 @@
 12-04 16:42 werkzeug     INFO     127.0.0.1 - - [04/Dec/2021 16:42:56] "[37mGET /api/visits/show HTTP/1.1[0m" 200 -
 12-04 16:42 resources.visitItem_resource INFO     Successfully added new visit: **Visit** visit_id: 10 ip_address: 79.184.11.180 last_access: 12-03-2021**Visit** .
 12-04 16:42 werkzeug     INFO     127.0.0.1 - - [04/Dec/2021 16:42:57] "[37mPOST /api/visit HTTP/1.1[0m" 201 -
+12-04 16:44 resources.visitCollection_resource INFO     Retrieving all visits
+12-04 16:44 werkzeug     INFO     127.0.0.1 - - [04/Dec/2021 16:44:47] "[37mOPTIONS /api/visit HTTP/1.1[0m" 200 -
+12-04 16:44 resources.visitItem_resource INFO     Adding new visit b'{"ip_address":"79.184.11.180","last_access":"12-03-2021"}'.
+12-04 16:44 werkzeug     INFO     127.0.0.1 - - [04/Dec/2021 16:44:47] "[37mGET /api/visits/show HTTP/1.1[0m" 200 -
+12-04 16:44 resources.visitItem_resource INFO     Successfully added new visit: **Visit** visit_id: 11 ip_address: 79.184.11.180 last_access: 12-03-2021**Visit** .
+12-04 16:44 werkzeug     INFO     127.0.0.1 - - [04/Dec/2021 16:44:48] "[37mPOST /api/visit HTTP/1.1[0m" 201 -
+12-06 12:28 werkzeug     INFO      * Restarting with stat
+12-06 12:28 werkzeug     WARNING   * Debugger is active!
+12-06 12:28 werkzeug     INFO      * Debugger PIN: 980-391-313
+12-06 12:28 werkzeug     INFO      * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+12-06 12:28 resources.visitCollection_resource INFO     Retrieving all visits
+12-06 12:28 werkzeug     INFO     127.0.0.1 - - [06/Dec/2021 12:28:09] "[37mGET /api/visits/show HTTP/1.1[0m" 200 -
+12-06 12:28 resources.visitCollection_resource INFO     Retrieving all visits
+12-06 12:28 werkzeug     INFO     127.0.0.1 - - [06/Dec/2021 12:28:35] "[37mGET /api/visits/show HTTP/1.1[0m" 200 -
+12-06 12:29 resources.visitCollection_resource INFO     Retrieving all visits
+12-06 12:29 werkzeug     INFO     127.0.0.1 - - [06/Dec/2021 12:29:11] "[37mGET /api/visits/show HTTP/1.1[0m" 200 -
