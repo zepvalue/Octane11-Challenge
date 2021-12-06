@@ -4,7 +4,7 @@ from flask_restful import Api
 from flask_sqlalchemy import SQLAlchemy
 from constants import OCTANE_11_DATABASE
 from database import db
-from resources.visitCollection_resource import VisitCollectionResource, VISIT_COLLECTION_ENDPOINT
+from resources.visitCollection_resource import VISIT_COLLECTION_ENDPOINT, VisitsCollection
 from resources.visitItem_resource import VisitItemResource, VISIT_ITEM_ENDPOINT
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
@@ -24,8 +24,9 @@ def create_app():
 
     db.init_app(app)
     api = Api(app)
-    api.add_resource(VisitCollectionResource, VISIT_COLLECTION_ENDPOINT,
-                     f"{VISIT_COLLECTION_ENDPOINT}/<date>")
+
+    api.add_resource(VisitsCollection, VISIT_COLLECTION_ENDPOINT,
+                     f"{VISIT_COLLECTION_ENDPOINT}/")
     api.add_resource(VisitItemResource, VISIT_ITEM_ENDPOINT,
                      f"{VISIT_ITEM_ENDPOINT}/")
     return app

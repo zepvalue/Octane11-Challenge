@@ -28,7 +28,8 @@ const IndexPage = () => {
 
   const [startDate, setStartDate] = useState(today);
   const [loading, setLoading] = useState(false);
-  const [country, setCountry] = useState("");
+  const [currentCountry, setCurrentCountry] = useState("");
+  const [mapCountry, setMapCountry] = useState("None");
 
   const deviceInfo = window.navigator.userAgent;
 
@@ -49,10 +50,11 @@ const IndexPage = () => {
 
     axios.get("https://api.db-ip.com/v2/free/self").then((response) => {
       setIp(response.data.ipAddress);
-      setCountry(response.data.countryName);
+      setCurrentCountry(response.data.countryName);
 
       axios.post("http://127.0.0.1:5000/api/visit", {
         ip_address: response.data.ipAddress,
+        country: response.data.countryName.toLowerCase(),
         last_access: format(startDate, "MM-dd-yyyy"),
       });
     });
@@ -64,13 +66,20 @@ const IndexPage = () => {
     });
   }, [startDate]);
 
+  useEffect(() => {
+    setLoading(true);
+
+    axios
+      .get(`http://127.0.0.1:5000/api/visits/show?country=${mapCountry}`)
+      .then((res) => setVisits(res.data));
+
+    setLoading(false);
+  }, [mapCountry]);
+
   return (
     <main style={pageStyles}>
       <title>Visits Tracker</title>
-      <div>
-        Connected from {country}
-        <MapChart />
-      </div>
+
       <div>
         <h1 style={headingStyles}>{`Today is ${format(
           startDate,
@@ -99,6 +108,7 @@ const IndexPage = () => {
       </div>
 
       <div>
+        Connected from <b>{currentCountry}</b>
         <p>
           Your ip address: <b>{ip}</b>
         </p>
@@ -106,6 +116,9 @@ const IndexPage = () => {
       <div>You are using : {deviceInfo}</div>
       <div>
         <VisitsTable visits={visits} loading={loading} />
+      </div>
+      <div>
+        <MapChart setMapCountry={setMapCountry} />
       </div>
     </main>
   );

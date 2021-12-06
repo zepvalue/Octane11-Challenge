@@ -27,6 +27,14 @@ const columns = [
     right: true,
     reorder: true,
   },
+  {
+    id: 3,
+    name: "country",
+    selector: (row) => row.country,
+    sortable: true,
+    right: true,
+    reorder: true,
+  },
 ];
 
 const VisitsTable = ({ visits, loading }) => (

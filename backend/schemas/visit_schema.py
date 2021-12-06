@@ -1,6 +1,7 @@
 from marshmallow import Schema, fields, post_load
 from models.visit import Visit
 
+
 class VisitSchema(Schema):
     """
     Visit Marshmallow Schema
@@ -10,6 +11,7 @@ class VisitSchema(Schema):
     visit_id = fields.Integer()
     ip_address = fields.String(allow_none=False)
     last_access = fields.String(allow_none=False)
+    country = fields.String(allow_none=False)
 
     @post_load
     def make_visit(self, data, **kwargs):

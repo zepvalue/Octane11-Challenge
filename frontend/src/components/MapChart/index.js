@@ -10,21 +10,11 @@ import {
 } from "react-simple-maps";
 import worldMap from "./WorldMap.json";
 
-const rounded = (num) => {
-  if (num > 1000000000) {
-    return Math.round(num / 100000000) / 10 + "Bn";
-  } else if (num > 1000000) {
-    return Math.round(num / 100000) / 10 + "M";
-  } else {
-    return Math.round(num / 100) / 10 + "K";
-  }
-};
-
 const colorScale = scaleLinear()
   .domain([0.29, 0.68])
   .range(["#ffedea", "#ff5233"]);
 
-const MapChart = () => {
+const MapChart = ({ setMapCountry }) => {
   const [data, setData] = useState([]);
   const [country, setCountry] = useState("");
 
@@ -51,7 +41,7 @@ const MapChart = () => {
             {({ geographies }) =>
               geographies.map((geo) => {
                 const d = data.find((s) => s.ISO3 === geo.properties.ISO_A3);
-                const { NAME, POP_EST } = geo.properties;
+                const { NAME } = geo.properties;
 
                 return (
                   <Geography
@@ -59,7 +49,7 @@ const MapChart = () => {
                       setCountry(NAME);
                     }}
                     onMouseDown={() => {
-                      console.log("clicked the country ", NAME);
+                      setMapCountry(NAME.toLowerCase());
                     }}
                     style={{
                       hover: {
@@ -85,4 +75,4 @@ const MapChart = () => {
   );
 };
 
-export default MapChart;
+export default memo(MapChart);
