@@ -2,7 +2,6 @@
 from flask import Flask
 from flask_restful import Api
 from flask_sqlalchemy import SQLAlchemy
-from database import db
 from resources.visitCollection_resource import VISIT_COLLECTION_ENDPOINT, VisitsCollection
 from resources.visitItem_resource import VisitItemResource, VISIT_ITEM_ENDPOINT
 from flask_sqlalchemy import SQLAlchemy
