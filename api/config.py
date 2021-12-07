@@ -1,16 +1,16 @@
 from dotenv import dotenv_values
 import logging
 
-config = dotenv_values(".env")
+dotEnv = dotenv_values(".env")
 
 
 class Config(object):
     DEBUG = False
     TESTING = False
-    SQLALCHEMY_DATABASE_URI = config['OCTANE_DB']
+    SQLALCHEMY_DATABASE_URI = dotEnv["OCTANE_DB"]
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-    ENV = config['FLASK_ENV']
-    SECRET_KEY = config['SECRET_KEY']
+    ENV = dotEnv['FLASK_ENV']
+    SECRET_KEY = dotEnv['SECRET_KEY']
 
 # Should check the generation of the logs under this profile
 

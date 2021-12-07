@@ -8,6 +8,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 from gevent.pywsgi import WSGIServer
 from flask_sqlalchemy import SQLAlchemy
+from database import db
 
 
 def create_app():
@@ -15,16 +16,14 @@ def create_app():
     Function that creates our Flask application.
     This function creates the Flask app, Flask-Restful API,
     and Flask-SQLAlchemy connection
-    :param db_location: Connection string to the database
+
     :return: Initialized Flask app
     """
 
     app = Flask(__name__)
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://opiffoii:hmpiEyw0MtnViId-CFCvEaR7KIVpGpT3@castor.db.elephantsql.com/opiffoii"
-    db = SQLAlchemy()
     CORS(app)
-
     db.init_app(app)
     api = Api(app)
 
