@@ -2,12 +2,13 @@
 from flask import Flask
 from flask_restful import Api
 from flask_sqlalchemy import SQLAlchemy
-from constants import OCTANE_11_DATABASE
 from database import db
 from resources.visitCollection_resource import VISIT_COLLECTION_ENDPOINT, VisitsCollection
 from resources.visitItem_resource import VisitItemResource, VISIT_ITEM_ENDPOINT
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
+from gevent.pywsgi import WSGIServer
+from flask_sqlalchemy import SQLAlchemy
 
 
 def create_app():
@@ -20,6 +21,9 @@ def create_app():
     """
 
     app = Flask(__name__)
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://opiffoii:hmpiEyw0MtnViId-CFCvEaR7KIVpGpT3@castor.db.elephantsql.com/opiffoii"
+    db = SQLAlchemy()
     CORS(app)
 
     db.init_app(app)
@@ -34,6 +38,12 @@ def create_app():
 
 if __name__ == "__main__":
     app = create_app()
-    app.config.from_object("config.DevelopmentConfig")
-    # FIXME The app.run should not berun in production
-    app.run(host="localhost", port=5000, debug=True)
+    if app.config["ENV"] == "production":
+        print('\n\n-------- PROD ------>\n\n')
+        app.config.from_object("config.ProductionConfig")
+        http_server = WSGIServer(('localhost', 5000), app)
+        http_server.serve_forever()
+    elif app.config["ENV"] == "development":
+        print('\n\n-------- DEV ------>\n\n')
+        app.config.from_object("config.DevelopmentConfig")
+        app.run(host="localhost", port=5000, debug=True)
