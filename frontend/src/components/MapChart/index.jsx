@@ -24,15 +24,15 @@ const MapChart = ({ setMapCountry, setContent }) => {
   }, []);
 
   return (
-    <div>
+    <div className="country-map">
       <center><p>Click on the map to filter the visits by coutry</p></center>
       <ComposableMap
       width={800}
-      height={400}
+      height={300}
         data-tip=""
         projectionConfig={{
           rotate: [-10, 0, 0],
-          scale: 120,
+          scale: 100,
         }}
       >
         <Sphere stroke="#E4E5E6" strokeWidth={0.5} />

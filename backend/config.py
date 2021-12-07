@@ -31,5 +31,5 @@ class DevelopmentConfig(Config):
         format="%(asctime)s %(name)-12s %(levelname)-8s %(message)s",
         datefmt="%m-%d %H:%M",
         handlers=[logging.FileHandler(
-            "visits_api.log"), logging.StreamHandler()],
+            "logs/visits_api.log"), logging.StreamHandler()],
     )

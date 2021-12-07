@@ -11,5 +11,9 @@ const visits = data;
 it("should display a table with a list of visits", () => {
   const component = <VisitsTable loading={false} visits={visits} />;
   const { container } = render(component);
-  console.log(container);
+  const mapCountry = container.querySelector("country-map");
+  console.log(
+    "🚀 ~ file: index.test.js ~ line 15 ~ it ~ mapCountry",
+    mapCountry
+  );
 });
