@@ -6,6 +6,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import "react-datepicker/dist/react-datepicker-cssmodules.min.css";
 import MapChart from "../components/MapChart";
 import VisitsTable from "../components/VisitsTable";
+import ReactTooltip from "react-tooltip";
 
 // styles
 const pageStyles = {
@@ -25,21 +26,20 @@ const IndexPage = () => {
   const [ip, setIp] = useState("");
   const [visits, setVisits] = useState([]);
   const today = new Date();
+  const [content, setContent] = useState("");
 
   const [startDate, setStartDate] = useState(today);
   const [loading, setLoading] = useState(false);
   const [currentCountry, setCurrentCountry] = useState("");
   const [mapCountry, setMapCountry] = useState("None");
-
-  const deviceInfo = window.navigator.userAgent;
+  const apiURL = process.env.GATSBY_API_URL;
+  console.log("🚀 ~ file: index.js ~ line 34 ~ IndexPage ~ apiURL", apiURL);
 
   const fetchFilteredRes = async (date) => {
     const formattedDate = format(date, "MM-dd-yyyy");
     setLoading(true);
 
-    const res = await axios.get(
-      `http://127.0.0.1:5000/api/visits/show?date=${formattedDate}`
-    );
+    const res = await axios.get(`${apiURL}/visits/show?date=${formattedDate}`);
 
     setVisits(res.data);
     setLoading(false);
@@ -52,25 +52,27 @@ const IndexPage = () => {
       setIp(response.data.ipAddress);
       setCurrentCountry(response.data.countryName);
 
-      axios.post("http://127.0.0.1:5000/api/visit", {
+      axios.post(`${apiURL}/visit`, {
         ip_address: response.data.ipAddress,
         country: response.data.countryName.toLowerCase(),
         last_access: format(startDate, "MM-dd-yyyy"),
       });
     });
+  }, []);
 
-    axios.get("http://127.0.0.1:5000/api/visits/show").then((res) => {
+  useEffect(() => {
+    axios.get(`${apiURL}/visits/show`).then((res) => {
       setLoading(true);
       setVisits(res.data);
       setLoading(false);
     });
-  }, [startDate]);
+  }, []);
 
   useEffect(() => {
     setLoading(true);
 
     axios
-      .get(`http://127.0.0.1:5000/api/visits/show?country=${mapCountry}`)
+      .get(`${apiURL}/visits/show?country=${mapCountry}`)
       .then((res) => setVisits(res.data));
 
     setLoading(false);
@@ -94,7 +96,7 @@ const IndexPage = () => {
         }}
       >
         <div>
-          <p>Pick a date to filter the table: </p>
+          <p>Pick a date to filter the visits by date: </p>
         </div>
         <div style={{ padding: "10px" }}>
           <DatePicker
@@ -113,12 +115,12 @@ const IndexPage = () => {
           Your ip address: <b>{ip}</b>
         </p>
       </div>
-      <div>You are using : {deviceInfo}</div>
       <div>
         <VisitsTable visits={visits} loading={loading} />
       </div>
       <div>
-        <MapChart setMapCountry={setMapCountry} />
+        <MapChart setMapCountry={setMapCountry} setContent={setContent} />
+        <ReactTooltip>{content}</ReactTooltip>
       </div>
     </main>
   );

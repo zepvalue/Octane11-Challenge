@@ -8,4 +8,6 @@ public
 __pycache__/
 
 .env
+.env.development
+.env.production
 .pyc

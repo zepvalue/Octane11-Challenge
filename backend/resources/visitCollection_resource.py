@@ -24,6 +24,13 @@ class VisitsCollection(Resource):
         date = request.args.get('date')
         country = request.args.get('country')
 
+        if not date and not country:
+            logger.info(f"Retrieving all visits")
+            try:
+                return self._get_all_visits(), 200
+            except NoResultFound:
+                abort(404, message="Visit not found")
+
         if date:
             logger.info(f"Retrieving visits by date")
             try:
@@ -35,13 +42,6 @@ class VisitsCollection(Resource):
             logger.info(f"Retrieving visits by country")
             try:
                 return self._get_visits_by_country(country), 200
-            except NoResultFound:
-                abort(404, message="Visit not found")
-
-        if not date and not country:
-            logger.info(f"Retrieving all visits")
-            try:
-                return self._get_all_visits(), 200
             except NoResultFound:
                 abort(404, message="Visit not found")
 

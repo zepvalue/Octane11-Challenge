@@ -14,20 +14,21 @@ const colorScale = scaleLinear()
   .domain([0.29, 0.68])
   .range(["#ffedea", "#ff5233"]);
 
-const MapChart = ({ setMapCountry }) => {
+const MapChart = ({ setMapCountry, setContent }) => {
   const [data, setData] = useState([]);
-  const [country, setCountry] = useState("");
 
   useEffect(() => {
-    csv(`/data.csv`).then((data) => {
+    csv('/data.csv').then((data) => {
       setData(data);
     });
   }, []);
 
   return (
     <div>
-      <h1>{country}</h1>
+      <center><p>Click on the map to filter the visits by coutry</p></center>
       <ComposableMap
+      width={800}
+      height={400}
         data-tip=""
         projectionConfig={{
           rotate: [-10, 0, 0],
@@ -46,10 +47,11 @@ const MapChart = ({ setMapCountry }) => {
                 return (
                   <Geography
                     onMouseEnter={() => {
-                      setCountry(NAME);
+                      setContent(NAME)
                     }}
                     onMouseDown={() => {
                       setMapCountry(NAME.toLowerCase());
+                      setContent(NAME)
                     }}
                     style={{
                       hover: {
@@ -71,8 +73,8 @@ const MapChart = ({ setMapCountry }) => {
           </Geographies>
         )}
       </ComposableMap>
-    </div>
+      </div>
   );
 };
 
-export default memo(MapChart);
+export default MapChart;
